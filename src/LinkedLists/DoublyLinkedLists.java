@@ -37,6 +37,11 @@ public final class DoublyLinkedLists<T> implements LinkedLists<T> {
         } else { //Set the second item in the list to be the new first
             Node<T> second = first.getNext();
             second.setPrev(null);
+            /**
+             * For circular implementation, see below:
+             */
+            //second.setPrev(last);
+            //last.setNext(second);
             first = second;
         }
 
@@ -52,7 +57,13 @@ public final class DoublyLinkedLists<T> implements LinkedLists<T> {
         } else { //Set the penultimate item to be the new last item
             Node<T> newLast = last.getPrev();
             newLast.setNext(null);
+            /**
+             * For circular implementation, see below:
+             */
+            //newLast.setNext(first);
+            //first.setPrev(newLast);
             last = newLast;
+
         }
 
         size--;
@@ -117,6 +128,10 @@ public final class DoublyLinkedLists<T> implements LinkedLists<T> {
         Node<T> node = new Node<>(element, null, first);
         if (first != null) { //If first is not empty
             first.setPrev(node); //Set new node to be old node's prev
+            /**
+             * For circular implementation:
+             */
+            //last.setNext(node);
         }
         first = node; //new node is now first
         if (last == null) { //If list is empty and last was null
@@ -130,6 +145,10 @@ public final class DoublyLinkedLists<T> implements LinkedLists<T> {
         Node<T> node = new Node<>(element, last, null);
         if (last != null) {
             last.setNext(node);
+            /**
+             * For circular implementation:
+             */
+            //first.setPrev(node);
         }
         last = node;
         if (first == null) {
