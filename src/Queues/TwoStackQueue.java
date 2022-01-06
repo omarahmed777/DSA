@@ -17,7 +17,7 @@ public class TwoStackQueue<E> implements Queue<E> {
         stack1.push(element); //Push new element to now empty stack1
 
         while (!stack2.isEmpty()) {
-            stack1.push(stack2.pop()); //Maintain order of queue w/ element at the bottom of stack1
+            stack1.push(stack2.pop()); //Maintain order of queue w/ new element at the bottom of stack1
         }
     }
 
